@@ -56,7 +56,6 @@ using static Nuke.Common.Tools.ReSharper.ReSharperTasks;
             nameof(TwitterAccessTokenSecret)
         })]
 [TeamCity(
-    TeamCityAgentPlatform.Unix,
     Version = "2020.1",
     VcsTriggeredTargets = new[] { nameof(Pack), nameof(Test) },
     NightlyTriggeredTargets = new[] { nameof(Pack), nameof(Test) },

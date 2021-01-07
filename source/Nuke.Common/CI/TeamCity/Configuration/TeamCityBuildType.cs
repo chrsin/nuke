@@ -23,7 +23,6 @@ namespace Nuke.Common.CI.TeamCity.Configuration
         public string PartitionName { get; set; }
         public TeamCityConfigurationParameter[] Parameters { get; set; }
         public string[] ArtifactRules { get; set; }
-        public TeamCityAgentPlatform Platform { get; set; }
 
         public TeamCityTrigger[] Triggers { get; set; }
         public TeamCityDependency[] Dependencies { get; set; }
@@ -108,10 +107,7 @@ namespace Nuke.Common.CI.TeamCity.Configuration
 
                 using (writer.WriteBlock("exec"))
                 {
-                    var path = Platform == TeamCityAgentPlatform.Windows
-                        ? BuildCmdPath
-                        : BuildCmdPath.Replace(".cmd", ".sh");
-                    writer.WriteLine($"path = {path.DoubleQuote()}");
+                    writer.WriteLine($"path = {BuildCmdPath.DoubleQuote()}");
                     writer.WriteLine($"arguments = {arguments.DoubleQuote()}");
                 }
             }
